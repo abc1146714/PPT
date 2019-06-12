@@ -1,0 +1,213 @@
+<!doctype html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+
+    <title>葡萄藤PPT</title>
+
+    <link rel="stylesheet" href="https://ptteng.github.io/PPT/css/reveal/reveal.css">
+
+    <!-- PPT主题，可以在/css/reveal/theme/中选择其他主题，目前暂时只能使用该模板 -->
+    <link rel="stylesheet" href="https://ptteng.github.io/PPT/css/reveal/theme/ptt.css">
+
+    <!-- syntax highlighting 代码高亮主题 -->
+    <link rel="stylesheet" href="https://ptteng.github.io/PPT/lib/reveal/css/zenburn.css">
+    <!-- 打印和PDF输出样式 -->
+    <script>
+        var link = document.createElement( 'link' );
+        link.rel = 'stylesheet';
+        link.type = 'text/css';
+        link.href = window.location.search.match( /print-pdf/gi ) ? 'https://ptteng.github.io/PPT/css/reveal/print/pdf.css' : '../css/reveal/print/paper.css';
+        document.getElementsByTagName( 'head' )[0].appendChild( link );
+    </script>
+</head>
+<body>
+<img src="https://ptteng.github.io/PPT/img/demo/logo.png" alt="" usemap="#pttmap" class="base-logo">
+<map name="pttmap">
+    <area shape="rect" coords="0,0,276,58" href="http://www.jnshu.com" alt="" target="_blank"/>
+</map>
+<div class="reveal">
+    <div class="slides">
+         <section class="present" style="top: 221.5px; display: block;">
+            <h2> 端口是什么含义，怎么判断一个端口是否被占用了，如何判断一个端口是否被防火墙拦截，怎么用Telnet判断端口号是否打开？
+            </h2>
+            <p>分享人：廖志鹏</p>	
+        </section>
+        <section hidden="" aria-hidden="true" class="future" style="top: 69px; display: block;">
+            <p>1.背景介绍</p>
+            <p>2.知识剖析</p>
+            <p>3.常见问题</p>            
+            <p>4.编码实战</p>
+            <p>5.扩展思考</p>
+            <p>6.参考文献</p>
+            <p>7.更多讨论</p>
+        </section>	       
+		<section hidden="" aria-hidden="true" class="future" style="top: 267px; display: block;">
+			
+			<section>
+				<h3>1.背景介绍</h3>
+			</section>
+			
+		<section class="future" style="top: 119px; display: none;" hidden="" aria-hidden="true">
+		    <h3>为什么要用到端口</h3>
+            <p style="text-align:left; ">在Internet上，各主机间通过TCP/TP协议发送和接收数据报，各个数据报根据其目的主机的ip地址来进行互联网络中的路由选择。我们知道大多数操作系统都支持多程序（进程）同时运行，那么目的主机应该把接收到的数据报传送给众多同时运行的进程中的哪一个呢？</br>
+			这个时候就需要引入一个概念：端口</br>
+			
+			</p>
+		</section>
+		</section>	     
+
+		<section hidden="" aria-hidden="true" class="future" style="top: 330px; display: none;">
+			<section>
+				<h3>2.知识剖析</h3>
+			</section>
+			
+		<section class="future" style="top: 119px; display: none;" hidden="" aria-hidden="true">
+		    <h3>端口的含义</h3>
+            <p style="text-align:left; ">
+			在网络技术中，端口(Port)大致有两种意思：一是物理意义上的端口，比如，ADSL Modem（宽带调制解调器）、集线器、交换机、路由器用于连接其他网络设备的接口，如RJ-45端口、SC端口等等；</br>二是逻辑意义上的端口，一般是指TCP/IP协议中的端口，端口号的范围从0到65535，比如用于浏览网页服务的80端口，用于FTP服务的21端口等等
+			
+			</p>
+		</section>
+		
+		<section class="future" style="top: 119px; display: none;" hidden="" aria-hidden="true">
+		    <h3>软硬件端口含义</h3>
+            <p style="text-align:left; ">
+			计算机“端口” 是英文port的义译，可以认为是计算机与外界通讯交流的出口。其中硬件领域的端口又称接口，如：USB端口、串行端口等。</br>
+			软件领域的端口一般指网络中面向连接服务和无连接服务的通信协议端口，是一种抽象的软件结构，包括一些数据结构和I/O（基本输入输出）缓冲区。</br>
+			</br>
+			</p>
+		</section>
+		
+		<section class="future" style="top: 119px; display: none;" hidden="" aria-hidden="true">
+		    <h3>端口分类</h3>
+            <p style="text-align:left; ">
+			按端口号可分为3大类：</br>
+			（1）公认端口（Well Known Ports）：从0到1023，它们紧密绑定（binding）于一些服务。通常这些端口的通讯明确表明了某种服务的协议。例如：80端口实际上总是HTTP通讯。</br>
+			（2）注册端口（Registered Ports）：从1024到49151。它们松散地绑定于一些服务。也就是说有许多服务绑定于这些端口，这些端口同样用于许多其它目的。例如：许多系统处理动态端口从1024左右开始。</br>
+			（3）动态和/或私有端口（Dynamic and/or Private Ports）：从49152到65535。理论上，不应为服务分配这些端口。实际上，机器通常从1024起分配动态端口。但也有例外：SUN的RPC端口从32768开始。
+		  	</p>
+		</section>
+		
+		</section>
+
+		<section hidden="" aria-hidden="true" class="future" style="top: 330px; display: none;">
+		<section>
+				<h3>3.常见问题</h3>
+			</section>
+				<section class="future" style="top: 119px; display: none;" hidden="" aria-hidden="true">
+		    <h3>如何判断一个端口是否被占用了</h3>
+            <p style="text-align:left; ">
+			netstat  -anp  |grep   端口号 ；查看端口是否被占用</br>
+			以3306为例，netstat  -anp  |grep  3306</br>
+			监控状态为LISTEN表示已经被占用，最后一列显示被服务mysqld占用</br>
+			netstat   -nultp（此处不用加端口号） ；查看当前所有已经使用的端口情况 </br>
+			例子：如何查看tomcat的端口号</br>
+			先 ps -ef|grep tomcat  查看进程号；再 netstat   -nultp 查看端口使用情况，如何根据进程号找对应端口</br>
+			8005--关闭tomcat进程所用，8009--反向代理tomcat用到的端口
+			</p>
+		</section>
+		
+					<section class="future" style="top: 119px; display: none;" hidden="" aria-hidden="true">
+		    <h3>怎么用Telnet判断端口号是否打开？</h3>
+            <p style="text-align:left; ">
+			linux上直接用telnet localhost 3306</br>
+			查看telnet server是否安装：rpm -qa | grep telnet-server</br>
+			如果没有查询到相关信息，则安装：yum install telnet-server</br>
+			查看telnet是否安装</br>rpm -qa | grep telnet</br>
+			如果没有查询到相关信息，则安装：yum install telnet</br>
+			查看xinetd（eXtended InterNET services daemon超级守护进程）是否安装：rpm -qa | grep xinetd</br>
+			如果没有查询到相关信息，则安装：yum install xinetd</br>
+			配置并启动Telnet，xinetd和telnet必须设置开机启动，否则无法启动Telnet服务</br>
+			systemctl enable xinetd.service</br>
+			systemctl enable telnet.socket</br>
+			启动服务：</br>
+			systemctl start telnet.socket</br>
+			systemctl start xinetd</br>
+			
+			</p>
+		</section>
+		
+		</section>
+		
+			<section hidden="" aria-hidden="true" class="future" style="top: 330px; display: none;">
+			<h3>4.编码实战</h3>
+			<p></p>
+		</section>
+		
+		<section hidden="" aria-hidden="true" class="future" style="top: 330px; display: none;">
+		<section>
+				<h3>5.扩展思考</h3>
+		</section>
+		<section class="future" style="top: 119px; display: none;" hidden="" aria-hidden="true">
+		    <h3>如何开放端口</h3>
+            <p style="text-align:left; ">
+			1、通过云服务器的控制台管理界面开放</br>
+			2、通过防火墙配置文件开放</br>
+			先查看是否安装了防火墙：rpm -qa | grep iptables</br>
+			vi  /etc/sysconfig/iptables 打开防火墙配置文件
+			比如添加8000端口</br>
+			-A INPUT -m state --state NEW -m tcp -p tcp --dport 8000 -j ACCEPT</br>
+			重启防火墙：service  iptables restart</br>
+			</p>
+		</section>
+		</section>
+		<section hidden="" aria-hidden="true" class="future" style="top: 330px; display: none;">
+			<h3>6.参考文献</h3>
+	   <p>csdn博客、百度百科</p>
+		</section>        
+        <section hidden="" aria-hidden="true" class="future" style="top: 330px; display: none;">
+            <h3>7.更多讨论</h3>
+        </section>
+        
+        <section hidden="" aria-hidden="true" class="future" style="top: 330px; display: none;">
+            <h4>分享到此结束</h4>
+            <p>谢谢大家！</p>            
+        </section>
+      
+      
+
+    </div>
+</div>
+
+
+<script src="https://ptteng.github.io/PPT/lib/reveal/js/head.min.js"></script>
+<script src="https://ptteng.github.io/PPT/lib/reveal/reveal.js"></script>
+
+<script>
+    // 以下为常见配置属性的默认值
+    // {
+    // 	controls: true, // 是否在右下角展示控制条
+    // 	progress: true, // 是否显示演示的进度条
+    // 	slideNumber: false, // 是否显示当前幻灯片的页数编号，也可以使用代码slideNumber: 'c / t' ，表示当前页/总页数。
+    // 	history: false, // 是否将每个幻灯片改变加入到浏览器的历史记录中去
+    // 	keyboard: true, // 是否启用键盘快捷键来导航
+    // 	overview: true, // 是否启用幻灯片的概览模式，可使用"Esc"或"o"键来切换概览模式
+    // 	center: true, // 是否将幻灯片垂直居中
+    // 	touch: true, // 是否在触屏设备上启用触摸滑动切换
+    // 	loop: false, // 是否循环演示
+    // 	rtl: false, // 是否将演示的方向变成RTL，即从右往左
+    // 	fragments: true, // 全局开启和关闭碎片。
+    // 	autoSlide: 0, // 两个幻灯片之间自动切换的时间间隔（毫秒），当设置成 0 的时候则禁止自动切换，该值可以被幻灯片上的 ` data-autoslide` 属性覆盖
+    // 	transition: 'default', // 切换过渡效果，有none/fade/slide/convex/concave/zoom
+    // 	transitionSpeed: 'default', // 过渡速度，default/fast/slow
+    // 	mouseWheel: true, //是否启用通过鼠标滚轮来切换幻灯片
+    // }
+    // 初始化幻灯片
+    Reveal.initialize({
+        history: true,
+        dependencies: [
+            {src: '../plugin/markdown/marked.js'},
+            {src: '../plugin/markdown/markdown.js'},
+            {src: '../plugin/notes/notes.js', async: true},
+            {
+                src: '../plugin/highlight/highlight.js', async: true, callback: function () {
+                hljs.initHighlightingOnLoad();
+            }
+            }
+        ]
+    });
+</script>
+</body>
+</html>
