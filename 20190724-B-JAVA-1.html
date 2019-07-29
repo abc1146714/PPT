@@ -1,0 +1,193 @@
+<!doctype html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+
+    <title>葡萄藤PPT</title>
+
+    <link rel="stylesheet" href="https://ptteng.github.io/PPT/css/reveal/reveal.css">
+
+    <!-- PPT主题，可以在/css/reveal/theme/中选择其他主题，目前暂时只能使用该模板 -->
+    <link rel="stylesheet" href="https://ptteng.github.io/PPT/css/reveal/theme/ptt.css">
+
+    <!-- syntax highlighting 代码高亮主题 -->
+    <link rel="stylesheet" href="https://ptteng.github.io/PPT/lib/reveal/css/zenburn.css">
+    <!-- 打印和PDF输出样式 -->
+    <script>
+        var link = document.createElement( 'link' );
+        link.rel = 'stylesheet';
+        link.type = 'text/css';
+        link.href = window.location.search.match( /print-pdf/gi ) ? 'https://ptteng.github.io/PPT/css/reveal/print/pdf.css' : '../css/reveal/print/paper.css';
+        document.getElementsByTagName( 'head' )[0].appendChild( link );
+    </script>
+</head>
+<body>
+<img src="https://ptteng.github.io/PPT/img/demo/logo.png" alt="" usemap="#pttmap" class="base-logo">
+<map name="pttmap">
+    <area shape="rect" coords="0,0,276,58" href="http://www.jnshu.com" alt="" target="_blank"/>
+</map>
+<div class="reveal">
+    <div class="slides">
+         <section class="present" style="top: 221.5px; display: block;">
+            <h2> Tiles有什么用处，为什么要用Tiles，如果不使用Tiles，可以实现公共部分的复用吗？
+            </h2>
+            <p>分享人：廖志鹏</p>	
+        </section>
+        <section hidden="" aria-hidden="true" class="future" style="top: 69px; display: block;">
+            <p>1.背景介绍</p>
+            <p>2.知识剖析</p>
+            <p>3.常见问题</p>        
+            <p>4.编码实战</p>
+            <p>5.扩展思考</p>
+            <p>6.参考文献</p>
+            <p>7.更多讨论</p>
+        </section>	       
+		<section hidden="" aria-hidden="true" class="future" style="top: 267px; display: block;">
+			
+			<section>
+				<h3>1.背景介绍</h3>
+			</section>
+			
+		<section class="future" style="top: 119px; display: none;" hidden="" aria-hidden="true">
+		    <h3>什么是tiles？</h3>
+            <p style="text-align:left; ">Tiles 是一种JSP布局框架，主要目的是为了将复杂的jsp页面作为一个的页面的部分机能，
+			然后用来组合成一个最终表示用页面用的，这样的话，便于对页面的各个机能的变更及维护。</br>
+			
+			</p>
+		</section>
+		</section>	     
+
+		<section hidden="" aria-hidden="true" class="future" style="top: 330px; display: none;">
+			<section>
+				<h3>2.知识剖析</h3>
+			</section>
+			
+			
+		<section class="future" style="top: 50px; display: none;" hidden="" aria-hidden="true">
+		    <h3>tiles有什么用？</h3>
+            <p>
+			<img src="https://img-blog.csdn.net/20150922113517630" alt="">
+			
+			</p>
+		</section>
+			<section class="future" style="top: 50px; display: none;" hidden="" aria-hidden="true">
+		    <h3>tiles有什么用</h3>
+            <p>
+			<img src="http://img.blog.csdn.net/20150922113536661" alt="">
+			
+			</p>
+		</section>
+			
+		<section class="future" style="top: 119px; display: none;" hidden="" aria-hidden="true">
+		    <h3>tiles怎么用？</h3>
+            <p style="text-align:left; ">
+			1、引入tiles相关的jar包</br>
+			2、mvc配置文件添加tiles的视图解析器和配置器（指向布局文件）</br>
+			3、配置布局文件以定义布局</br>
+			4、配置模板页</br>
+			</p>
+		</section>
+		
+		</section>
+
+		<section hidden="" aria-hidden="true" class="future" style="top: 330px; display: none;">
+		<section>
+				<h3>3.常见问题</h3>
+			</section>
+				<section class="future" style="top: 119px; display: none;" hidden="" aria-hidden="true">
+		    <h3>为什么要用Tiles？</h3>
+            <p style="text-align:left; ">
+			以修真院官网为例子，很多地方都是头部和底部不变的，改变的只是中间的body部分；</br>
+			虽然现在的官网的页面不是用的tiles实现的，但是可以用tiles实现这样的效果</br>
+			那么为什么要用tiles呢？可以反过来思考，我用tiles这样做有什么益处：</br>
+			举个例子，如果我想在头部加一个现实当前时间的状态，但是官网有这么多页面，</br>
+			难道我要写这样一行代码，然后每一个页面都粘贴一次吗，这未免太麻烦</br>
+			用了tiles之后，只需要在头部添加这样一段代码以实现显示当前时间就行了，而且是每一个页面都实现，因为头部是复用的
+			
+			</p>
+		</section>
+		
+		</section>
+		
+			<section hidden="" aria-hidden="true" class="future" style="top: 330px; display: none;">
+			<h3>4.编码实战</h3>
+			<p></p>
+		</section>
+		
+		<section hidden="" aria-hidden="true" class="future" style="top: 330px; display: none;">
+		<section>
+				<h3>5.扩展思考</h3>
+		</section>
+		<section class="future" style="top: 119px; display: none;" hidden="" aria-hidden="true">
+		    <h3>如果不使用Tiles，可以实现公共部分的复用吗？</h3>
+            <p style="text-align:left; ">
+			可以的，还有其它的页面布局工具</br>
+			SiteMesh 是一个网页布局和修饰的框架，利用它可以将网页的内容和页面结构分离，以达到页面结构共享的目的。</br>
+			JSP Layout 是一个用来实现 JSP 布局支持的简单示例项目。该项目只需要一个 Servlet 类，一些配置即可</br>
+			比较：前两者都必须使用预先配置好的布局，使用XML文件来定义布局，真正的数据显示页面无法灵活控制所需的布局；
+			而 JSP Layout 是一个超轻量级的布局控制，要使用哪个布局文件，由目标页面通过代码进行控制</br>
+			</p>
+		</section>
+		</section>
+		<section hidden="" aria-hidden="true" class="future" style="top: 330px; display: none;">
+			<h3>6.参考文献</h3>
+	   <p>https://www.cnblogs.com/handsome1013/p/6140720.html</br>
+	   https://blog.csdn.net/u012492220/article/details/17075379
+	   
+	   </p>
+		</section>        
+        <section hidden="" aria-hidden="true" class="future" style="top: 330px; display: none;">
+            <h3>7.更多讨论</h3>
+        </section>
+        
+        <section hidden="" aria-hidden="true" class="future" style="top: 330px; display: none;">
+            <h4>分享到此结束</h4>
+            <p>谢谢大家！</p>            
+        </section>
+      
+      
+
+    </div>
+</div>
+
+
+<script src="https://ptteng.github.io/PPT/lib/reveal/js/head.min.js"></script>
+<script src="https://ptteng.github.io/PPT/lib/reveal/reveal.js"></script>
+
+<script>
+    // 以下为常见配置属性的默认值
+    // {
+    // 	controls: true, // 是否在右下角展示控制条
+    // 	progress: true, // 是否显示演示的进度条
+    // 	slideNumber: false, // 是否显示当前幻灯片的页数编号，也可以使用代码slideNumber: 'c / t' ，表示当前页/总页数。
+    // 	history: false, // 是否将每个幻灯片改变加入到浏览器的历史记录中去
+    // 	keyboard: true, // 是否启用键盘快捷键来导航
+    // 	overview: true, // 是否启用幻灯片的概览模式，可使用"Esc"或"o"键来切换概览模式
+    // 	center: true, // 是否将幻灯片垂直居中
+    // 	touch: true, // 是否在触屏设备上启用触摸滑动切换
+    // 	loop: false, // 是否循环演示
+    // 	rtl: false, // 是否将演示的方向变成RTL，即从右往左
+    // 	fragments: true, // 全局开启和关闭碎片。
+    // 	autoSlide: 0, // 两个幻灯片之间自动切换的时间间隔（毫秒），当设置成 0 的时候则禁止自动切换，该值可以被幻灯片上的 ` data-autoslide` 属性覆盖
+    // 	transition: 'default', // 切换过渡效果，有none/fade/slide/convex/concave/zoom
+    // 	transitionSpeed: 'default', // 过渡速度，default/fast/slow
+    // 	mouseWheel: true, //是否启用通过鼠标滚轮来切换幻灯片
+    // }
+    // 初始化幻灯片
+    Reveal.initialize({
+        history: true,
+        dependencies: [
+            {src: '../plugin/markdown/marked.js'},
+            {src: '../plugin/markdown/markdown.js'},
+            {src: '../plugin/notes/notes.js', async: true},
+            {
+                src: '../plugin/highlight/highlight.js', async: true, callback: function () {
+                hljs.initHighlightingOnLoad();
+            }
+            }
+        ]
+    });
+</script>
+</body>
+</html>
