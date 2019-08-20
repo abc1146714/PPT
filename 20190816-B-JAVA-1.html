@@ -1,0 +1,192 @@
+<!doctype html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+
+    <title>葡萄藤PPT</title>
+
+    <link rel="stylesheet" href="https://ptteng.github.io/PPT/css/reveal/reveal.css">
+
+    <!-- PPT主题，可以在/css/reveal/theme/中选择其他主题，目前暂时只能使用该模板 -->
+    <link rel="stylesheet" href="https://ptteng.github.io/PPT/css/reveal/theme/ptt.css">
+
+    <!-- syntax highlighting 代码高亮主题 -->
+    <link rel="stylesheet" href="https://ptteng.github.io/PPT/lib/reveal/css/zenburn.css">
+    <!-- 打印和PDF输出样式 -->
+    <script>
+        var link = document.createElement( 'link' );
+        link.rel = 'stylesheet';
+        link.type = 'text/css';
+        link.href = window.location.search.match( /print-pdf/gi ) ? 'https://ptteng.github.io/PPT/css/reveal/print/pdf.css' : '../css/reveal/print/paper.css';
+        document.getElementsByTagName( 'head' )[0].appendChild( link );
+    </script>
+</head>
+<body>
+<img src="https://ptteng.github.io/PPT/img/demo/logo.png" alt="" usemap="#pttmap" class="base-logo">
+<map name="pttmap">
+    <area shape="rect" coords="0,0,276,58" href="http://www.jnshu.com" alt="" target="_blank"/>
+</map>
+<div class="reveal">
+    <div class="slides">
+         <section class="present" style="top: 221.5px; display: block;">
+            <h2> 什么叫穿透DB？什么情况下会发生，穿透DB后会发生什么事情？
+            </h2>
+            <p>分享人：廖志鹏</p>	
+        </section>
+        <section hidden="" aria-hidden="true" class="future" style="top: 69px; display: block;">
+            <p>1.背景介绍</p>
+            <p>2.知识剖析</p>
+            <p>3.常见问题</p>        
+            <p>4.编码实战</p>
+            <p>5.扩展思考</p>
+            <p>6.参考文献</p>
+            <p>7.更多讨论</p>
+        </section>	       
+		<section hidden="" aria-hidden="true" class="future" style="top: 267px; display: block;">
+			
+			<section>
+				<h3>1.背景介绍</h3>
+			</section>
+			
+		<section class="future" style="top: 119px; display: none;" hidden="" aria-hidden="true">
+		    <h3>什么叫穿透DB？</h3>
+            <p style="text-align:left; ">准确说应该叫缓存穿透，高并发请求集体访问数据库，导致数据库负载剧增甚至崩溃</br>
+			
+			</p>
+		</section>
+		</section>	     
+
+		<section hidden="" aria-hidden="true" class="future" style="top: 330px; display: none;">
+			<section>
+				<h3>2.知识剖析</h3>
+			</section>
+			
+			
+		<section class="future" style="top: 50px; display: none;" hidden="" aria-hidden="true">
+		    <h3>缓存的处理流程</h3>
+            <p>
+			<img src="https://img-blog.csdn.net/20180919143214712?watermark/2/text/aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L2tvbmd0aWFvNQ==/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70" alt="">
+			
+			</p>
+		</section>
+			<section class="future" style="top: 50px; display: none;" hidden="" aria-hidden="true">
+		    <h3>什么情况下会发生缓存穿透</h3>
+            <p>
+			缓存穿透是指缓存和数据库中都没有的数据，而用户不断发起请求，如发起为id为“-1”的数据或id为特别大不存在的数据。这时的用户很可能是攻击者，攻击会导致数据库压力过大。
+			</p>
+		</section>
+			
+		
+		</section>
+
+		<section hidden="" aria-hidden="true" class="future" style="top: 330px; display: none;">
+		<section>
+				<h3>3.常见问题</h3>
+			</section>
+				<section class="future" style="top: 119px; display: none;" hidden="" aria-hidden="true">
+		    <h3>如何预防缓存穿透</h3>
+            <p style="text-align:left; ">
+			解决方案：</br>
+接口层增加校验，如用户鉴权校验，id做基础校验，id<=0的直接拦截；</br>
+从缓存取不到的数据，在数据库中也没有取到，这时也可以将key-value对写为key-null，</br>
+缓存有效时间可以设置短点，如30秒（设置太长会导致正常情况也没法使用）。这样可以防止攻击用户反复用同一个id暴力攻击
+			</p>
+		</section>
+		
+		</section>
+		
+			<section hidden="" aria-hidden="true" class="future" style="top: 330px; display: none;">
+			<h3>4.编码实战</h3>
+			<p></p>
+		</section>
+		
+		<section hidden="" aria-hidden="true" class="future" style="top: 330px; display: none;">
+		<section>
+				<h3>5.扩展思考</h3>
+		</section>
+		<section class="future" style="top: 119px; display: none;" hidden="" aria-hidden="true">
+		    <h3>缓存击穿</h3>
+            <p style="text-align:left; ">
+		描述：</br> 
+		缓存击穿是指缓存中没有但数据库中有的数据（一般是缓存时间到期），</br>
+		这时由于并发用户特别多，同时读缓存没读到数据，又同时去数据库去取数据，
+		引起数据库压力瞬间增大，造成过大压力</br> 
+		解决方案：</br> 
+设置热点数据永远不过期。
+			</p>
+		</section>
+				<section class="future" style="top: 119px; display: none;" hidden="" aria-hidden="true">
+		    <h3>缓存雪崩</h3>
+            <p style="text-align:left; ">
+		描述：</br> 
+		缓存雪崩是指缓存中数据大批量到过期时间，而查询数据量巨大，引起数据库压力过大甚至down机。和缓存击穿不同的是，        缓存击穿指并发查同一条数据，缓存雪崩是不同数据都过期了，很多数据都查不到从而查数据库。
+		解决方案：</br> 
+缓存数据的过期时间设置随机，防止同一时间大量数据过期现象发生。</br> 
+如果缓存数据库是分布式部署，将热点数据均匀分布在不同搞得缓存数据库中。</br> 
+			</p>
+		</section>
+		
+		
+		
+		</section>
+		<section hidden="" aria-hidden="true" class="future" style="top: 330px; display: none;">
+			<h3>6.参考文献</h3>
+	   <p>https://blog.csdn.net/kongtiao5/article/details/82771694
+	   
+	   </p>
+		</section>        
+        <section hidden="" aria-hidden="true" class="future" style="top: 330px; display: none;">
+            <h3>7.更多讨论</h3>
+        </section>
+        
+        <section hidden="" aria-hidden="true" class="future" style="top: 330px; display: none;">
+            <h4>分享到此结束</h4>
+            <p>谢谢大家！</p>            
+        </section>
+      
+      
+
+    </div>
+</div>
+
+
+<script src="https://ptteng.github.io/PPT/lib/reveal/js/head.min.js"></script>
+<script src="https://ptteng.github.io/PPT/lib/reveal/reveal.js"></script>
+
+<script>
+    // 以下为常见配置属性的默认值
+    // {
+    // 	controls: true, // 是否在右下角展示控制条
+    // 	progress: true, // 是否显示演示的进度条
+    // 	slideNumber: false, // 是否显示当前幻灯片的页数编号，也可以使用代码slideNumber: 'c / t' ，表示当前页/总页数。
+    // 	history: false, // 是否将每个幻灯片改变加入到浏览器的历史记录中去
+    // 	keyboard: true, // 是否启用键盘快捷键来导航
+    // 	overview: true, // 是否启用幻灯片的概览模式，可使用"Esc"或"o"键来切换概览模式
+    // 	center: true, // 是否将幻灯片垂直居中
+    // 	touch: true, // 是否在触屏设备上启用触摸滑动切换
+    // 	loop: false, // 是否循环演示
+    // 	rtl: false, // 是否将演示的方向变成RTL，即从右往左
+    // 	fragments: true, // 全局开启和关闭碎片。
+    // 	autoSlide: 0, // 两个幻灯片之间自动切换的时间间隔（毫秒），当设置成 0 的时候则禁止自动切换，该值可以被幻灯片上的 ` data-autoslide` 属性覆盖
+    // 	transition: 'default', // 切换过渡效果，有none/fade/slide/convex/concave/zoom
+    // 	transitionSpeed: 'default', // 过渡速度，default/fast/slow
+    // 	mouseWheel: true, //是否启用通过鼠标滚轮来切换幻灯片
+    // }
+    // 初始化幻灯片
+    Reveal.initialize({
+        history: true,
+        dependencies: [
+            {src: '../plugin/markdown/marked.js'},
+            {src: '../plugin/markdown/markdown.js'},
+            {src: '../plugin/notes/notes.js', async: true},
+            {
+                src: '../plugin/highlight/highlight.js', async: true, callback: function () {
+                hljs.initHighlightingOnLoad();
+            }
+            }
+        ]
+    });
+</script>
+</body>
+</html>
